@@ -1,0 +1,75 @@
+---
+title: Deployment
+description: Production deployment guidance for Invio using Docker Compose.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+This page shows a simple, reliable way to run Invio in production with Docker Compose. Copy the snippet, set your env, and you’re good to go.
+
+## Requirements
+
+- Docker and Docker Compose
+- Backend image with Deno 2.x and wkhtmltopdf installed
+
+## Environment
+
+| Name | Description |
+| --- | --- |
+| `ADMIN_USER` | Admin username for Basic Auth. |
+| `ADMIN_PASS` | Admin password for Basic Auth. |
+| `JWT_SECRET` | Secret used for optional JWT issuance. |
+| `DATABASE_PATH` | SQLite path inside the container (e.g., `/app/data/invio.db`). |
+| `BACKEND_URL` | Frontend→Backend base URL (e.g., `http://backend:3000`). |
+
+## Compose tips
+
+- Keep the backend service name as `backend` (or update `BACKEND_URL`).
+- Expose backend on port 3000 and frontend (Fresh) on 8000.
+- Mount volumes for the SQLite DB and `backend/data/templates`.
+- Add a simple healthcheck hitting `/health`.
+
+### Example snippet
+
+```yaml
+services:
+	backend:
+		image: your/deno-backend:latest # includes wkhtmltopdf
+		env_file: .env
+		ports: ["3000:3000"]
+		healthcheck:
+			test: ["CMD", "curl", "-fsS", "http://localhost:3000/health"]
+			interval: 30s
+			timeout: 5s
+			retries: 3
+		volumes:
+			- invio_data:/app/data
+			- invio_templates:/app/backend/data/templates
+
+	frontend:
+		image: your/fresh-frontend:latest
+		env_file: .env
+		ports: ["8000:8000"]
+		depends_on: [backend]
+
+volumes:
+	invio_data: {}
+	invio_templates: {}
+```
+
+## Persistence
+
+- Persist the SQLite database at `DATABASE_PATH`
+- Persist template assets at `backend/data/templates`
+
+## Security
+
+- Use strong `ADMIN_USER`/`ADMIN_PASS` values; keep `.env` private.
+- If frontend and backend run separately, expose only what’s needed.
+- Enable automated backups of volumes.
+
+## Post-deploy checks
+
+- Open `/health` on the backend and confirm `{ status: "ok" }`.
+- Log in to the frontend and create a test invoice.
+- Download a PDF to verify `wkhtmltopdf` is available.

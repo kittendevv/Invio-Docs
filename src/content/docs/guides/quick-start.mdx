@@ -1,0 +1,50 @@
+---
+title: Quick Start
+description: Get Invio running locally with Docker Compose.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Spin up Invio locally in a few minutes. You'll log in, create a customer, make an invoice, and download a PDF.
+
+<Steps>
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/kittendevv/Invio.git
+   cd Invio
+   ```
+
+2. Copy and configure environment
+
+   Copy the example file and edit values as needed:
+
+   ```bash
+   cp .env.example .env
+   # then open .env and set ADMIN_USER, ADMIN_PASS, JWT_SECRET, DATABASE_PATH, BACKEND_URL
+   ```
+
+3. Start the stack
+
+   ```bash
+   docker compose up -d
+   ```
+
+4. Log in
+
+   Visit `http://localhost:8000` and log in with your `ADMIN_USER`/`ADMIN_PASS`.
+
+5. Next steps
+
+   - Create a customer, then an invoice.
+   - Publish the invoice and open the public HTML/PDF link.
+   - Tweak your business settings and choose a default template.
+
+</Steps>
+
+### Troubleshooting
+
+- PDFs not generating? Make sure the backend image includes `wkhtmltopdf`, or use the HTML view as a fallback.
+- Seeing 401 Unauthorized? Check `.env` `ADMIN_USER`/`ADMIN_PASS`, then restart Compose.
+- Frontend can’t reach backend? Confirm `BACKEND_URL` in `.env` (e.g., `http://backend:3000`).

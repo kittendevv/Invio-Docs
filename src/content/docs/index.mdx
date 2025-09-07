@@ -5,9 +5,12 @@ template: splash
 hero:
   tagline: Self-hosted invoicing without the bloat. Fast, transparent, and fully yours.
   actions:
-    - text: Get Started
-      link: /guides/example/
+    - text: Overview
+      link: /overview/
       icon: right-arrow
+    - text: Quick Start
+      link: /guides/quick-start/
+      icon: rocket
     - text: Support Me
       link: https://ko-fi.com/codingkitten
       icon: heart
@@ -17,16 +20,16 @@ hero:
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid>
-    <Card title="Focused, not bloated" icon="pencil">
-        No CRM, no projects, no add‑ons—just invoicing. Create, send, and mark paid in seconds.
-    </Card>
-    <Card title="You own your data" icon="add-document">
-        Run it yourself. Export everything. Move or back up anytime—no vendor lock‑in.
-    </Card>
-    <Card title="Fast by design" icon="setting">
-        Built with Deno + Fresh for a snappy, reliable experience you can host with confidence.
-    </Card>
-    <Card title="Frictionless for clients" icon="open-book">
-        Share a secure link—clients can view without accounts or passwords.
-    </Card>
+  <Card title="Built for doing, not configuring" icon="pencil">
+    Create an invoice, send a link, get paid. No CRMs, projects, or bloat getting in your way.
+  </Card>
+  <Card title="You really own it" icon="add-document">
+    Self-hosted by default. Your data lives where you put it, and exporting is always an option.
+  </Card>
+  <Card title="Fast & dependable" icon="setting">
+    Deno + Fresh on the frontend and Hono + SQLite on the backend keep things simple and quick.
+  </Card>
+  <Card title="Client-friendly" icon="open-book">
+    Share a secure public link—no accounts or passwords required to view invoices.
+  </Card>
 </CardGrid>

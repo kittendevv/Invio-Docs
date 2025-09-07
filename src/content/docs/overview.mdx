@@ -1,0 +1,69 @@
+---
+title: Overview
+description: High-level overview of Invio, a self-hosted invoicing app built with Deno, Hono, Fresh, and SQLite.
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+Welcome to Invio. It’s a fast, self‑hosted invoicing app you can run anywhere and actually understand. This page gives you the big picture and quick links to dive in.
+
+## What is Invio?
+
+Invio is a self-hosted invoicing app: fast, minimal, and transparent. You own your data and deploy it anywhere.
+
+### Stack
+
+- Backend: Deno 2.x, Hono, SQLite, wkhtmltopdf for PDFs
+- Frontend: Fresh (Preact)
+- Auth: Basic Auth for admin endpoints; optional JWT issuance (unused by current UI)
+- Data: Customers, Invoices, Settings, Templates (HTML-based invoice themes)
+
+### Key behaviors
+
+- Invoice HTML rendered from selected template and business settings
+- PDF generation via wkhtmltopdf with HTML fallback
+- Built-in templates: professional-modern, minimalist-clean (not deletable)
+- Public/private HTML and PDF share the same rendering pipeline
+
+### What you’ll do here
+
+- Log in and create your first customer and invoice
+- Pick a default theme or install your own template
+- Share a public link and download a PDF
+
+### Start here
+
+- Get running: Guides → [Quick Start](/guides/quick-start/)
+- Make it yours: Guides → [Create a Template](/guides/templates/)
+- Learn the UI: Guides → [UI Tour](/guides/ui-tour/)
+
+## Configuration
+See Reference → [Configuration](/reference/configuration/).
+
+## Auth model
+ 
+See Reference → [Authentication](/reference/authentication/).
+
+## UI
+
+See Reference → [UI Routes](/reference/ui-routes/).
+
+## Public invoice viewer
+
+See Reference → [Public Invoice Viewer](/reference/public-viewer/).
+
+## API
+
+See Reference → [API Reference](/reference/api/).
+
+## Rendering & PDFs
+
+See Reference → [Rendering & PDFs](/reference/rendering-and-pdfs/).
+
+## Behaviors
+
+See Reference → [Behaviors & Constraints](/reference/behaviors/).
+
+## Deployment
+
+See Guides → [Deployment](/guides/deployment/).

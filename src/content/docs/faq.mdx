@@ -1,0 +1,34 @@
+---
+title: FAQ
+description: Friendly answers to common questions about Invio.
+---
+
+## What is Invio?
+A self-hosted invoicing app. It’s fast, minimal, and transparent—you own your data.
+
+## How do I install it?
+Follow Guides → Quick Start to run it with Docker Compose. You’ll be up in minutes.
+
+## Can I use my own invoice design?
+Yes. Create a single HTML file, install it via a manifest from Settings → Templates, and set it as the default. See Guides → Create a Template.
+
+## Why can’t I add images or external fonts to templates?
+For security and reliability. Installed templates are sanitized and limited. Keep CSS inline and simple for the most reliable PDFs.
+
+## My PDF looks different from the HTML. What can I do?
+Simplify your CSS (tables and basic layout work best) and avoid advanced features. wkhtmltopdf is conservative.
+
+## Where is my data stored?
+Everything lives in a SQLite database file on disk. Template files from manifests are mirrored under `backend/data/templates/`.
+
+## How do public invoice links work?
+Publish an invoice to generate a share token. Anyone with the link can view HTML or download the PDF.
+
+## Is there an API?
+Yes. See Reference → API for endpoints to manage invoices, customers, templates, and settings.
+
+## How do I back up and restore?
+Stop the app and copy the SQLite DB file (and `backend/data/templates/` if you use manifest-installed templates). To restore, replace the files and start the app.
+
+## How do I secure my instance?
+Use strong `ADMIN_USER`/`ADMIN_PASS`, keep `.env` private, restrict exposed ports, and back up regularly.
