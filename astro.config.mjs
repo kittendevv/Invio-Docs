@@ -29,6 +29,10 @@ export default defineConfig({
 					{
 						label: 'Reference',
 						items: [
+							{ label: 'System Requirements', slug: 'reference/system-requirements' },
+							{ label: 'Invoice Lifecycle', slug: 'reference/invoice-lifecycle' },
+							{ label: 'Listing & Filters', slug: 'reference/listing-and-filters' },
+							{ label: 'Backup & Restore', slug: 'reference/backup-restore' },
 							{ label: 'Configuration', slug: 'reference/configuration' },
 							{ label: 'Authentication', slug: 'reference/authentication' },
 							{ label: 'UI Routes', slug: 'reference/ui-routes' },

@@ -1,0 +1,31 @@
+---
+title: Troubleshooting
+description: Quick fixes for common setup and runtime issues.
+---
+
+## Login or 401 errors
+
+- Check `.env` `ADMIN_USER` and `ADMIN_PASS`.
+- Clear the `invio_auth` cookie and log in again.
+- Ensure the frontend points to the correct `BACKEND_URL`.
+
+## PDFs won’t generate
+
+- Confirm the backend image includes `wkhtmltopdf`.
+- Try the HTML view to verify rendering.
+- Simplify CSS (tables/basic layout) to reduce HTML→PDF differences.
+
+## Frontend can’t reach backend
+
+- Verify `BACKEND_URL` (e.g., `http://backend:3000`).
+- If running locally, make sure ports are published and services are up.
+
+## Database or file permission errors
+
+- Ensure the process can write to `DATABASE_PATH` and templates directory.
+- In containers, check volume mounts and ownership.
+
+## Template install fails
+
+- The sanitizer blocks images, scripts, iframes, external CSS, and large files (>128KB).
+- Keep HTML self-contained with inline `<style>`.
