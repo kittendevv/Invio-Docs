@@ -13,7 +13,10 @@ export default defineConfig({
 				dark: './src/assets/logo-dark.svg',
 				alt: 'Invio',
 			},
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/kittendevv/Invio' },
+				{ icon: 'external', label: 'Live Demo', href: 'https://invio-demo.codingkitten.hackclub.app' },
+			],
 			sidebar: [
 				{ label: 'Overview', slug: 'overview' },
 				{ label: 'FAQ', slug: 'faq' },
@@ -22,6 +25,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Quick Start', slug: 'guides/quick-start' },
 						{ label: 'Deployment', slug: 'guides/deployment' },
+						{ label: 'Hosted Demo', slug: 'guides/hosted-demo' },
 							{ label: 'UI Tour', slug: 'guides/ui-tour' },
 							{ label: 'Create a Template', slug: 'guides/templates' },
 					],
@@ -30,6 +34,7 @@ export default defineConfig({
 						label: 'Reference',
 						items: [
 							{ label: 'System Requirements', slug: 'reference/system-requirements' },
+							{ label: 'Demo Mode (Read-only)', slug: 'reference/demo-mode' },
 							{ label: 'Invoice Lifecycle', slug: 'reference/invoice-lifecycle' },
 							{ label: 'Listing & Filters', slug: 'reference/listing-and-filters' },
 							{ label: 'Backup & Restore', slug: 'reference/backup-restore' },
